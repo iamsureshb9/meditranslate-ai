@@ -1,0 +1,85 @@
+import Link from "next/link";
+import { ArrowRight, FileText, PlayCircle, ShieldCheck, Sparkles } from "lucide-react";
+
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+
+const features = [
+  {
+    title: "Upload reports",
+    description: "Add PDF or image reports using a responsive drag-and-drop workflow.",
+    icon: FileText
+  },
+  {
+    title: "Plain English",
+    description: "Translate dense medical language into clear summaries and next questions.",
+    icon: Sparkles
+  },
+  {
+    title: "Simple MVP",
+    description: "No accounts, no database, and mock AI results until the API is ready.",
+    icon: ShieldCheck
+  }
+];
+
+export default function HomePage() {
+  return (
+    <main className="medical-grid">
+      <section className="mx-auto grid min-h-[calc(100vh-121px)] max-w-7xl items-center gap-10 px-4 py-12 sm:px-6 lg:grid-cols-[1.05fr_0.95fr] lg:px-8">
+        <div className="animate-fade-up">
+          <div className="mb-5 inline-flex rounded-md border border-blue-200 bg-white px-3 py-1 text-sm font-semibold text-blue-700">
+            AI medical report explanations
+          </div>
+          <h1 className="max-w-4xl text-4xl font-semibold tracking-normal text-slate-950 sm:text-5xl lg:text-6xl">
+            MediTranslate AI
+          </h1>
+          <p className="mt-6 max-w-2xl text-lg leading-8 text-slate-600">
+            Upload a medical report and get a structured, plain-English explanation with important findings,
+            abnormal values, lifestyle ideas, and smart questions for your doctor.
+          </p>
+          <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+            <Button asChild size="lg">
+              <Link href="/upload">
+                Start upload
+                <ArrowRight className="h-5 w-5" aria-hidden="true" />
+              </Link>
+            </Button>
+            <Button asChild size="lg" variant="outline">
+              <Link href="/upload">
+                <PlayCircle className="h-5 w-5" aria-hidden="true" />
+                Try Demo Report
+              </Link>
+            </Button>
+            <Button asChild size="lg" variant="outline">
+              <Link href="/results">View mock dashboard</Link>
+            </Button>
+          </div>
+        </div>
+
+        <div className="surface-card animate-scale-in rounded-lg p-5">
+          <div className="rounded-lg bg-blue-600 p-5 text-white">
+            <p className="text-sm font-medium text-blue-100">Report status</p>
+            <p className="mt-2 text-2xl font-semibold">Ready for review</p>
+          </div>
+          <div className="mt-5 grid gap-4">
+            {features.map((feature) => (
+              <Card key={feature.title} className="border-blue-100 shadow-none transition-transform duration-200 hover:-translate-y-0.5">
+                <CardHeader className="flex-row items-start gap-4 space-y-0 p-4">
+                  <div className="flex h-10 w-10 flex-none items-center justify-center rounded-md bg-blue-50 text-blue-700">
+                    <feature.icon className="h-5 w-5" aria-hidden="true" />
+                  </div>
+                  <div>
+                    <CardTitle className="text-base">{feature.title}</CardTitle>
+                    <CardContent className="p-0 pt-2 text-sm leading-6 text-slate-600">
+                      {feature.description}
+                    </CardContent>
+                  </div>
+                </CardHeader>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+    </main>
+  );
+}

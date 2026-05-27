@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { ArrowRight, CheckCircle2, ClipboardList, FileHeart, FileText, FlaskConical, HeartPulse, PlayCircle, ShieldAlert, Sparkles, UploadCloud } from "lucide-react";
 
 import { FileUploader } from "@/components/FileUploader";
@@ -17,6 +17,19 @@ export function UploadPageClient() {
   const router = useRouter();
   const [report, setReport] = useState<UploadedReport>();
 
+  const scrollToUploader = useCallback(() => {
+    document.getElementById("upload-report")?.scrollIntoView({
+      behavior: "smooth",
+      block: "start"
+    });
+  }, []);
+
+  useEffect(() => {
+    if (window.location.hash === "#upload-report") {
+      window.setTimeout(scrollToUploader, 120);
+    }
+  }, [scrollToUploader]);
+
   const handleReportReady = useCallback((readyReport: UploadedReport) => {
     setReport(readyReport);
     sessionStorage.setItem(REPORT_STORAGE_KEY, JSON.stringify(readyReport));
@@ -24,11 +37,13 @@ export function UploadPageClient() {
 
   return (
     <main className="mx-auto grid max-w-7xl gap-8 px-4 py-10 sm:px-6 lg:grid-cols-[minmax(0,1fr)_380px] lg:px-8">
-      <Button asChild className="fixed bottom-5 right-5 z-40 shadow-lg sm:bottom-6 sm:right-6">
-        <a href="#upload-report">
-          Upload Now
-          <ArrowRight className="h-4 w-4" aria-hidden="true" />
-        </a>
+      <Button
+        type="button"
+        className="floating-upload-cta fixed bottom-5 left-1/2 z-40 h-12 -translate-x-1/2 rounded-full border border-white/60 bg-blue-600/85 px-6 text-sm font-semibold text-white shadow-[0_18px_45px_rgba(14,116,144,0.28)] backdrop-blur-md transition-all duration-200 hover:bg-blue-700/90 hover:shadow-[0_22px_55px_rgba(14,116,144,0.34)] focus-visible:ring-blue-600 sm:bottom-7 sm:px-7"
+        onClick={scrollToUploader}
+      >
+        Upload Now
+        <ArrowRight className="h-4 w-4" aria-hidden="true" />
       </Button>
 
       <section className="animate-fade-up">

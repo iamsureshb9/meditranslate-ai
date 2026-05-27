@@ -38,19 +38,18 @@ export default function HomePage() {
           </h1>
           <div className="mt-6 max-w-2xl space-y-4 text-lg leading-8 text-slate-600">
             <p>
-              MediTranslate AI is an AI-powered healthcare assistant that transforms complex medical reports into
-              clear, easy-to-understand explanations within minutes. Simply upload your blood test, scan, or
-              diagnostic report, and let AI highlight important findings, explain medical terms, and generate
-              actionable health insights.
+              MediTranslate AI helps you understand complex medical reports in plain English within minutes. Upload
+              your blood test or diagnostic report to get AI-powered summaries, key findings, and actionable health
+              insights — reducing confusion, saving time, and helping you make informed healthcare decisions.
             </p>
             <p>
-              Designed for everyday users — not medical experts — MediTranslate AI reduces confusion, saves time,
-              eases anxiety, and helps patients have more informed conversations with doctors.
+              From confusing medical jargon to clear health insights — understand your reports in just 3 simple
+              steps.
             </p>
           </div>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
             <Button asChild size="lg">
-              <Link href="/upload">
+              <Link href="/upload#upload-report">
                 Start upload
                 <ArrowRight className="h-5 w-5" aria-hidden="true" />
               </Link>

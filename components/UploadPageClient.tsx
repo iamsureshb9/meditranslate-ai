@@ -24,10 +24,16 @@ export function UploadPageClient() {
 
   return (
     <main className="mx-auto grid max-w-7xl gap-8 px-4 py-10 sm:px-6 lg:grid-cols-[minmax(0,1fr)_380px] lg:px-8">
+      <Button asChild className="fixed bottom-5 right-5 z-40 shadow-lg sm:bottom-6 sm:right-6">
+        <a href="#upload-report">
+          Upload Now
+          <ArrowRight className="h-4 w-4" aria-hidden="true" />
+        </a>
+      </Button>
+
       <section className="animate-fade-up">
         <div className="mb-8">
-          <p className="text-sm font-semibold uppercase tracking-[0.18em] text-blue-700">Hackathon-ready demo</p>
-          <h1 className="mt-3 text-3xl font-semibold tracking-normal text-slate-950 sm:text-4xl">Upload or try a demo report</h1>
+          <h1 className="text-3xl font-semibold tracking-normal text-slate-950 sm:text-4xl">Upload or try a demo report</h1>
           <p className="mt-3 max-w-2xl text-base leading-7 text-slate-600">
             Start with a one-click sample report or upload a PDF from your device. The demo path opens a polished results dashboard instantly for judges.
           </p>
@@ -121,7 +127,9 @@ export function UploadPageClient() {
           </Card>
         </div>
 
-        <FileUploader onReportReady={handleReportReady} />
+        <div id="upload-report" className="scroll-mt-24">
+          <FileUploader onReportReady={handleReportReady} />
+        </div>
       </section>
 
       <aside className="animate-scale-in space-y-5">

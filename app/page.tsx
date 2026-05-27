@@ -6,18 +6,21 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 const features = [
   {
-    title: "Upload reports",
-    description: "Add PDF or image reports using a responsive drag-and-drop workflow.",
+    title: "Upload Your Medical Report",
+    description:
+      "Simply upload your blood test, scan, or diagnostic report in PDF or image format. Our AI securely reads and processes the report within seconds.",
     icon: FileText
   },
   {
-    title: "Plain English",
-    description: "Translate dense medical language into clear summaries and next questions.",
+    title: "Let AI Analyze the Findings",
+    description:
+      "MediTranslate AI intelligently identifies important values, explains medical terminology in plain English, and highlights key health insights you should know.",
     icon: Sparkles
   },
   {
-    title: "Simple MVP",
-    description: "No accounts, no database, and mock AI results until the API is ready.",
+    title: "Understand & Take Action",
+    description:
+      "Get easy-to-understand summaries, lifestyle suggestions, and smart questions to ask your doctor — helping you make informed healthcare decisions with confidence.",
     icon: ShieldCheck
   }
 ];
@@ -66,8 +69,7 @@ export default function HomePage() {
 
         <div className="surface-card animate-scale-in rounded-lg p-5">
           <div className="rounded-lg bg-blue-600 p-5 text-white">
-            <p className="text-sm font-medium text-blue-100">Report status</p>
-            <p className="mt-2 text-2xl font-semibold">Ready for review</p>
+            <p className="text-2xl font-semibold">Getting Started!</p>
           </div>
           <div className="mt-5 grid gap-4">
             {features.map((feature) => (
